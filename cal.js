@@ -5,7 +5,7 @@ let screenValue = '';
 for (item of buttons) {
   item.addEventListener('click', (e) => {
     buttonText = e.target.innerText;
-    console.log(buttonText);
+    window.navigator.vibrate(300);
 
     if (buttonText == "X") {
       buttonText = "*";
@@ -19,14 +19,18 @@ for (item of buttons) {
 
 
     }
+    else if (buttonText == "◀"){
+      screen.value = screen.value.substr(0,screen.value.length-1);
+      screenValue =screen.value;
+
+    }
     else if (buttonText == "=") {
-      screen.value= eval(screenValue);
+      screen.value= eval(screen.value);
+      screenValue =screen.value;
     }
     
-
-
     
-    else {
+  else {
     screenValue += buttonText;
     screen.value=screenValue ;
   }
@@ -35,3 +39,5 @@ for (item of buttons) {
 
   })
 }
+
+
